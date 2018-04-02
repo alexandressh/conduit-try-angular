@@ -30,7 +30,9 @@ export class LoginComponent implements OnInit {
     const formModel = this.loginForm.value;
     const user: User = {
       email: formModel.email as string,
-      name: '', 
+      name: '',
+      bio: '',
+      username: formModel.email as string,
       password: formModel.password as string
     }
     return user;

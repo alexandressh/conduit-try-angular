@@ -10,5 +10,16 @@ export class AuthService {
   authenticateUser(user: User) {
       
   }
+  
+  getUserInfo():User {
+    const user: User = {
+      username: 'alexandressh',
+      email: 'alexandressh@gmail.com',
+      bio: 'This is a short bio',
+      name: 'Henrique Alexandre',
+      password: '123456789'
+    }
+    return user;
+  }
 
 }

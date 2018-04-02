@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; 
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -14,7 +15,9 @@ import { PostComponent } from './shared/post/post.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RootComponent } from './root/root.component';
-import { AuthService } from './services/auth/auth.service'
+import { AuthService } from './services/auth/auth.service';
+import { TagsService } from './services/tags/tags.service';
+import { ArticleService } from './services/article/article.service';
 
 
 @NgModule({
@@ -33,10 +36,13 @@ import { AuthService } from './services/auth/auth.service'
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModule.forRoot(),
     AppRoutingModule
   ],
   providers: [
-    AuthService  
+    AuthService,
+    TagsService,
+    ArticleService
   ],
   bootstrap: [AppComponent]
 })
