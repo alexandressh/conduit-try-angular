@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'; 
 
 
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { PostComponent } from './shared/post/post.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RootComponent } from './root/root.component';
+import { AuthService } from './services/auth/auth.service'
 
 
 @NgModule({
@@ -29,9 +31,13 @@ import { RootComponent } from './root/root.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    AuthService  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,5 +11,9 @@ export class RootComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  isUserLoggedIn() {
+    return false;
+  }
 
 }
