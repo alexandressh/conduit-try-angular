@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -36,6 +37,7 @@ import { ArticleService } from './services/article/article.service';
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     NgbModule.forRoot(),
     AppRoutingModule
   ],

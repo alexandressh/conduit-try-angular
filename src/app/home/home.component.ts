@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { TagsService } from '../services/tags/tags.service';
 import { ArticleService } from '../services/article/article.service';
 import { Tag } from '../models/tag';
-import { Article } from '../models/article';
+import { Article, Articles } from '../models/article';
+
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +13,9 @@ import { Article } from '../models/article';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  tags: Array<Tag>;
-  myFeed: Array<Article>;
-  globalFeed: Array<Article>;
+  tags: Array<Tag> = [];
+  myFeed: Articles;
+  globalFeed: Articles;
 
   constructor(
       private tagsService: TagsService,
@@ -21,9 +23,21 @@ export class HomeComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.tags = this.tagsService.getTopTags();
-    this.myFeed = this.articleService.getMyFeed();
-    this.globalFeed = this.articleService.getGlobalFeed();
+    this.tagsService.getAllTags().subscribe(data => {
+      this.tags = _.map(data.tags, tag => {
+        return {
+          name: tag
+        };
+      });
+    });
+
+    this.articleService.getAllArticles().subscribe(data => {
+      this.globalFeed = data;
+    });
+
+    this.articleService.getArticleFeed().subscribe(data => {
+      this.myFeed =  data;
+    });
   }
 
 }

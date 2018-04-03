@@ -18,48 +18,48 @@ export class SignupComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private ngbPopoverConfig: NgbPopoverConfig
-  ) { 
+  ) {
     this.ngbPopoverConfig.placement = 'right';
     this.ngbPopoverConfig.triggers = 'hover';
   }
 
   ngOnInit() {
     this.createForm();
-    
+
   }
-  
+
   onSubmit() {
     const isFormValid = this.validateForm();
-    if(!isFormValid) {
+    if (!isFormValid) {
       return false;
     }
-    
+
   }
-  
+
   private validateForm(): boolean {
     const formModel = this.signupForm.value;
     const invalidPassword = formModel.password !== formModel.passwordConfirmation;
-    
-    if(invalidPassword) {
+
+    if (invalidPassword) {
       return false;
     }
-    
+
     return true;
   }
-  
+
   private prepareUserInfo(): User {
     const formModel = this.signupForm.value;
-   
+
     const user: User = {
       username: formModel.username as string,
       email: formModel.email as string,
-      name: formModel.name as string, 
+      name: formModel.name as string,
       bio: '',
       password: formModel.password as string
-    }
+    };
     return user;
   }
-  
+
   private createForm() {
     this.signupForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(4)]],
