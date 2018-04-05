@@ -4,7 +4,7 @@
       <ngb-tabset>
         <ngb-tab title="Your Feed">
            <ng-template ngbTabContent>
-             <div *ngFor="let post of myFeed">
+             <div *ngFor="let post of myFeed?.articles">
                <app-post [article]="post"></app-post>
              </div>
              <div *ngIf="!myFeed || myFeed.articleCount == 0" class="d-flex justify-content-center my-5">

@@ -1,39 +1,39 @@
 <div class="signup-component h-100">
     <div class="row justify-content-sm-center align-items-center">
       <div class="col col-sm-6">
-        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-          
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
+
         <ng-template #popUsername>Username must contain at least 4 letters</ng-template>
         <ng-template #popName>Name must must contain at least 4 letters</ng-template>
         <ng-template #popEmail>Email must contain at least 4 letters and have the following format user@email</ng-template>
         <ng-template #popPassword>Password must contain at least 4 letters</ng-template>
         <ng-template #popPasswordConfirmation></ng-template>
-        
+
          <div class="form-group">
             <label for="inputUsername">Username</label>
-            <input type="text" 
-                   class="form-control" 
-                   id="inputUsername" 
+            <input type="text"
+                   class="form-control"
+                   id="inputUsername"
                    formControlName="username"
                    placeholder="Enter username"
                    [ngbPopover]="popUsername">
           </div>
           <div class="form-group">
             <label for="inputName">Name</label>
-            <input type="text" 
-                   class="form-control" 
-                   id="inputName" 
-                   formControlName="name" 
+            <input type="text"
+                   class="form-control"
+                   id="inputName"
+                   formControlName="name"
                    placeholder="Your name"
                    [ngbPopover]="popName">
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" 
-                   class="form-control" 
-                   id="exampleInputEmail1" 
-                   formControlName="email" 
-                   aria-describedby="emailHelp" 
+            <input type="email"
+                   class="form-control"
+                   id="exampleInputEmail1"
+                   formControlName="email"
+                   aria-describedby="emailHelp"
                    placeholder="Enter email"
                    [ngbPopover]="popEmail">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -41,23 +41,23 @@
           <div class="form-group row">
             <div class="col">
               <label for="password">Password</label>
-              <input type="password" 
-                     class="form-control" 
-                     id="password" 
-                     formControlName="password" 
+              <input type="password"
+                     class="form-control"
+                     id="password"
+                     formControlName="password"
                      placeholder="Password"
                      [ngbPopover]="popPassword">
             </div>
             <div class="col">
               <label for="passwordConfirmation">Confirm your password</label>
-              <input type="password" 
-                     class="form-control" 
-                     id="passwordConfirmation" 
-                     formControlName="passwordConfirmation" 
+              <input type="password"
+                     class="form-control"
+                     id="passwordConfirmation"
+                     formControlName="passwordConfirmation"
                      placeholder="Password"
                      [ngbPopover]="popPasswordConfirmation">
             </div>
-            
+
           </div>
           <button type="submit" class="btn btn-primary float-right" [disabled]="!signupForm.valid">Submit</button>
         </form>

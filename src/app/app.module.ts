@@ -19,6 +19,7 @@ import { RootComponent } from './root/root.component';
 import { AuthService } from './services/auth/auth.service';
 import { TagsService } from './services/tags/tags.service';
 import { ArticleService } from './services/article/article.service';
+import { httpInterceptorProviders } from './http-interceptors';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ArticleService } from './services/article/article.service';
   providers: [
     AuthService,
     TagsService,
-    ArticleService
+    ArticleService,
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TagsService } from '../services/tags/tags.service';
 import { ArticleService } from '../services/article/article.service';
 import { Tag } from '../models/tag';
-import { Article, Articles } from '../models/article';
+import { Article, ArticleList, Author } from '../models/article';
 
 import * as _ from 'lodash';
 
@@ -14,8 +14,8 @@ import * as _ from 'lodash';
 })
 export class HomeComponent implements OnInit {
   tags: Array<Tag> = [];
-  myFeed: Articles;
-  globalFeed: Articles;
+  myFeed: ArticleList;
+  globalFeed: ArticleList;
 
   constructor(
       private tagsService: TagsService,

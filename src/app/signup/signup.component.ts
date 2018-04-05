@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {NgbPopoverConfig} from '@ng-bootstrap/ng-bootstrap';
+import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { User } from '../models/user';
 import { AuthService } from '../services/auth/auth.service';
@@ -30,10 +30,14 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     const isFormValid = this.validateForm();
+    const user: User = this.prepareUserInfo();
     if (!isFormValid) {
       return false;
     }
 
+    this.authService.registerNewUser(user).subscribe(data => {
+      console.log(data);
+    });
   }
 
   private validateForm(): boolean {
@@ -62,11 +66,11 @@ export class SignupComponent implements OnInit {
 
   private createForm() {
     this.signupForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(4)]],
-      name: ['', [Validators.required, Validators.minLength(4)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required, Validators.minLength(4)],
-      passwordConfirmation: ['', Validators.required, Validators.minLength(4)]
+      username: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+      name: ['',  Validators.compose([Validators.required, Validators.minLength(4)])],
+      email: ['',  Validators.compose([Validators.required, Validators.minLength(4)])],
+      password: ['',  Validators.compose([Validators.required, Validators.minLength(4)])],
+      passwordConfirmation: ['',  Validators.compose([Validators.required, Validators.minLength(4)])]
     });
   }
 

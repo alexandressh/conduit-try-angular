@@ -14,37 +14,37 @@ export class EditorComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    articleService: ArticleService  
+    articleService: ArticleService
   ) { }
 
   ngOnInit() {
     this.createForm();
   }
-  
+
   onSubmit() {
     console.log(this.articleForm);
     console.log(this.prepareArticleInfo());
   }
-  
+
   private prepareArticleInfo(): Article {
     const formModel = this.articleForm.value;
      const article: Article = {
-      name: formModel.name as string,
-      summary: formModel.summary as string, 
-      content: formModel.content as string,
-      tags: formModel.tags,
-      author: 'alexandressh@gmail.com',
-      date: new Date()
-    }
+      title: formModel.title as string,
+      description: formModel.description as string,
+      body: formModel.body as string,
+      tagList: formModel.tags.split('.'),
+      author: {username: 'alexandressh@gmail.com'},
+      createdAt: (new Date()).toString()
+    };
     return article;
   }
-  
+
   private createForm() {
      this.articleForm = this.fb.group({
-      name: ['', Validators.required],
-      summary: ['', Validators.required],
-      content: ['', Validators.required],
-      tags: ['', Validators.required]
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      body: ['', Validators.required],
+      tagList: ['', Validators.required]
     });
   }
 

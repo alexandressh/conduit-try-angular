@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { User } from '../models/user';
 import { AuthService } from '../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,21 +12,26 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  
+
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
     ) { }
 
   ngOnInit() {
     this.createForm();
   }
-  
+
   onSubmit() {
-    console.log(this.loginForm);
-    console.log(this.prepareUserInfo());
+    const user: User = this.prepareUserInfo();
+    this.authService.authenticateUser(user).subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        this.router.navigate(['/home']);
+      }
+    });
   }
-  
+
   private prepareUserInfo(): User {
     const formModel = this.loginForm.value;
     const user: User = {
@@ -34,15 +40,15 @@ export class LoginComponent implements OnInit {
       bio: '',
       username: formModel.email as string,
       password: formModel.password as string
-    }
+    };
     return user;
   }
-  
+
   private createForm() {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
-  
+
 }

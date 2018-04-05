@@ -22,25 +22,25 @@ export class SettingsComponent implements OnInit {
     this.user = this.authService.getUserInfo();
     this.createForm();
   }
-  
+
   onSubmit() {
     console.log(this.settingsForm);
     console.log(this.prepareUserInfo());
   }
-  
+
   private prepareUserInfo(): User {
     const formModel = this.settingsForm.value;
     const user: User = {
       username: formModel.username as string,
       email: formModel.email as string,
-      name: formModel.name as string, 
-      bio: formModel.bio as string, 
+      name: formModel.name as string,
+      bio: formModel.bio as string,
       password: formModel.password as string
     }
     return user;
   }
-  
-  
+
+
   private createForm() {
      this.settingsForm = this.fb.group({
       username: [this.user.username, Validators.required],
