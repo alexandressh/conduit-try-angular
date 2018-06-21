@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Article } from '../models/article';
-import { ArticleService } from '../services/article/article.service';
+import { Article } from '../../models/article';
+import { ArticleService } from '../../services/article/article.service';
 
 @Component({
   selector: 'app-editor',

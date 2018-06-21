@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 
-import { User } from '../models/user';
-import { AuthService } from '../services/auth/auth.service';
+import { User } from '../../models/user';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-signup',

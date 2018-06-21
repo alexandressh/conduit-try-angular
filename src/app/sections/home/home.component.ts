@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TagsService } from '../services/tags/tags.service';
-import { ArticleService } from '../services/article/article.service';
-import { Tag } from '../models/tag';
-import { Article, ArticleList, Author } from '../models/article';
+import { TagsService } from '../../services/tags/tags.service';
+import { ArticleService } from '../../services/article/article.service';
+import { Tag } from '../../models/tag';
+import { Article, ArticleList, Author } from '../../models/article';
 
 import * as _ from 'lodash';
 

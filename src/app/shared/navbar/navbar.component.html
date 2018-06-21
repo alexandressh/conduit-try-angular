@@ -1,5 +1,4 @@
-<div class="root-component">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" routerLink="/home">Conduit</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +17,7 @@
           <a class="nav-link" routerLink="/settings" routerLinkActive="active">Settings</a>
         </li>
        <li class="nav-item" *ngIf="isUserLoggedIn">
-          <a class="nav-link" (click)="logout()">Log out</a>
+          <a class="nav-link">Log out</a>
         </li>
         <li class="nav-item" *ngIf="!isUserLoggedIn">
           <a class="nav-link" routerLink="/login" routerLinkActive="active">Sign In</a>
@@ -29,7 +28,3 @@
       </ul>
     </div>
   </nav>
-
-  <router-outlet></router-outlet>
-
-</div>
