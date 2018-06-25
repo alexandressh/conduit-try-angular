@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "c9": "ng serve -p 8080 -H 0.0.0.0 --public-host conduit-try-alexandressh.c9users.io",
+    "c9": "ng serve -p 8080 -H 0.0.0.0 --public-host conduit-try-alexandressh.c9users.io --proxy-config './src/proxy.conf.json'",
     "start": "ng serve -p 8080 -H 0.0.0.0 --public-host ${HOST}",
     "build": "ng build --prod",
     "test": "ng test",

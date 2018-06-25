@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs/Observable';
 import { catchError, filter, map, reduce } from 'rxjs/operators';
+import { Subject } from 'rxjs/Subject';
 
 import { User } from '../../models/user';
 import { environment } from './../../../environments/environment';
 
 import * as _ from 'lodash';
-import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class AuthService {
@@ -64,10 +65,10 @@ export class AuthService {
       if (token) {
         localStorage.setItem('currentUser', token);
         this.isUserLoggedInSubject.next(true);
-        return true;
+        return data;
       }
 
-      return false;
+      return data;
     });
   }
 

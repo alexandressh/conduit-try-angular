@@ -42,4 +42,9 @@ export class ArticleService {
     const url = `${this.baseUrl}/articles?tag=${tag}`;
     return this.http.get<ArticleList>(url);
   }
+  
+  createArticle(article: Article): Observable<Article> {
+    const url = `${this.baseUrl}/articles`;
+    return this.http.post<Article>(url, {article});
+  }
 }

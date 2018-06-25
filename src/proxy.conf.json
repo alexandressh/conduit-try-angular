@@ -1,0 +1,8 @@
+{
+    "/api": {
+      "target": "https://conduit-try-backend-alexandressh.c9users.io/",
+      "secure": true,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }

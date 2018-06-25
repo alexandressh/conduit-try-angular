@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from "@ngrx/store";
+
 import { NgbPopoverConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import { User } from '../../models/user';
@@ -17,6 +19,7 @@ export class SignupComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private store: Store<any>,
     private ngbPopoverConfig: NgbPopoverConfig
   ) {
     this.ngbPopoverConfig.placement = 'right';
@@ -24,6 +27,8 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('created');
+    this.store.dispatch({type: 'Any'});
     this.createForm();
 
   }

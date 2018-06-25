@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { PostComponent } from './post/post.component';
-import { NavbarComponent } from './navbar/navbar.component';
 
 import { AuthService } from '../services/auth/auth.service';
 import { TagsService } from '../services/tags/tags.service';
@@ -15,12 +14,10 @@ import { ArticleService } from '../services/article/article.service';
     RouterModule
     ],
   declarations: [
-        PostComponent,
-        NavbarComponent
+        PostComponent
     ],
    exports: [
-        PostComponent,
-        NavbarComponent
+        PostComponent
     ],
     providers: [
       AuthService,

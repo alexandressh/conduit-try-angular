@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from "@ngrx/store";
+
+import { Observable } from 'rxjs';
 
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth/auth.service';
+import { LOGIN_USER, LOADING_USER } from '../../state-management/actions/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private store: Store<any>
     ) { }
 
   ngOnInit() {
@@ -25,10 +30,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     const user: User = this.prepareUserInfo();
-    this.authService.authenticateUser(user).subscribe(isLoggedIn => {
-      if (isLoggedIn) {
-        this.router.navigate(['/home']);
-      }
+    
+    this.store.dispatch({type: LOADING_USER});
+    this.authService.authenticateUser(user).subscribe(data => {
+      const payload = {...user, ...data.user};
+      this.store.dispatch({type: LOGIN_USER, payload});
+      this.router.navigate(['/home']);
     });
   }
 

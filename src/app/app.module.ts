@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from "@ngrx/store";
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -12,6 +13,7 @@ import { AuthService } from './services/auth/auth.service';
 import { TagsService } from './services/tags/tags.service';
 import { ArticleService } from './services/article/article.service';
 import { httpInterceptorProviders } from './http-interceptors';
+import { reducers } from './state-management/reducers';
 import { SharedModule } from './shared/shared.module';
 import { SectionsModule } from './sections/sections.module';
 
@@ -26,6 +28,7 @@ import { SectionsModule } from './sections/sections.module';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    StoreModule.forRoot(reducers),
     SharedModule,
     SectionsModule,
     NgbModule.forRoot()

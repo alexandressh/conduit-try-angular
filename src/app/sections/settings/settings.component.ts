@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from "@ngrx/store";
 
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth/auth.service';
+
+import { LOAD_FEED, LOAD_ARTICLES, LOAD_FAVORITES } from '../../state-management/actions/article.actions';
 
 @Component({
   selector: 'app-settings',
@@ -15,10 +18,13 @@ export class SettingsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store<any>
   ) { }
 
   ngOnInit() {
+    this.store.dispatch({type: LOAD_FEED});
+    
     this.user = this.authService.getUserInfo();
     this.createForm();
   }

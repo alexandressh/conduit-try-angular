@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SectionsRoutingModule } from './sections.routing.module';
 
+import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SignupComponent } from './signup/signup.component';
@@ -22,7 +23,8 @@ import { SharedModule } from '../shared/shared.module';
     SettingsComponent,
     SignupComponent,
     EditorComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,9 @@ import { SharedModule } from '../shared/shared.module';
     SectionsRoutingModule,
     NgbModule,
     SharedModule
+  ],
+  exports: [
+    NavbarComponent
   ],
   providers: [
   ]
